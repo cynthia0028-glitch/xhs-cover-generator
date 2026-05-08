@@ -1,0 +1,12 @@
+{
+  "name": "xhs-cover-generator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Public web app for AI-assisted Xiaohongshu cover generation.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
