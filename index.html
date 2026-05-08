@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>爆款封面生成器</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="control-panel" aria-label="封面设置">
+      <div class="brand-row">
+        <div>
+          <p class="eyebrow">XHS Cover Lab</p>
+          <h1>爆款封面生成器</h1>
+        </div>
+        <button class="icon-button" id="shuffleBtn" type="button" title="随机风格" aria-label="随机风格">
+          <span aria-hidden="true">↻</span>
+        </button>
+      </div>
+
+      <label class="drop-zone" for="imageInput">
+        <input id="imageInput" type="file" accept="image/*" multiple />
+        <span class="drop-icon">＋</span>
+        <strong>上传 1-6 张图片</strong>
+        <small>支持拼贴、主体放大和质感背景</small>
+      </label>
+
+      <div class="thumb-strip" id="thumbStrip" aria-label="已上传图片"></div>
+
+      <label class="field">
+        <span>封面标题</span>
+        <textarea id="titleInput" maxlength="42" rows="3" placeholder="例如：普通女生也能拍出高级感"></textarea>
+      </label>
+
+      <label class="field">
+        <span>辅助文字</span>
+        <input id="subtitleInput" maxlength="24" placeholder="例如：手机拍照｜构图｜调色" />
+      </label>
+
+      <div class="field">
+        <span>视觉风格</span>
+        <div class="segmented" role="radiogroup" aria-label="视觉风格">
+          <button type="button" class="segment active" data-style="collage">拼贴拙趣</button>
+          <button type="button" class="segment" data-style="handwrite">手写自然</button>
+          <button type="button" class="segment" data-style="cinema">胶片质感</button>
+          <button type="button" class="segment" data-style="impact">大字冲击</button>
+          <button type="button" class="segment" data-style="guofeng">古典国风</button>
+        </div>
+        <p class="style-hint" id="styleHint">适合户外、旅行、冒险、手账、拼贴等素材</p>
+      </div>
+
+      <div class="actions">
+        <button class="primary" id="generateBtn" type="button">生成封面</button>
+        <button class="secondary" id="downloadBtn" type="button">导出 PNG</button>
+      </div>
+
+      <div class="actions compact-actions">
+        <button class="primary ghost-primary" id="aiGenerateBtn" type="button">AI 完整出图</button>
+        <button class="secondary quiet-secondary" id="copyPromptBtn" type="button">复制提示词</button>
+      </div>
+
+      <details class="prompt-box">
+        <summary>内置 AI 提示词</summary>
+        <textarea id="promptOutput" rows="8" readonly></textarea>
+      </details>
+    </section>
+
+    <section class="preview-panel" aria-label="封面预览">
+      <div class="preview-toolbar">
+        <div>
+          <p class="eyebrow">1080 × 1440</p>
+          <h2>小红书 3:4 预览</h2>
+        </div>
+        <span id="statusText">等待生成</span>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="coverCanvas" width="1080" height="1440" aria-label="生成的封面"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
